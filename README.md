@@ -2,12 +2,12 @@
 This application presents a web system to manage commercial customers of a hypothetical company.
 
 The server-side was developed with [node.js](https://nodejs.org/en/) using [expressjs](http://expressjs.com/) to buid easily the web application and [express-validator](https://express-validator.github.io/) to validate the forms data.
-The client-side use [bootstrap](https://getbootstrap.com/) to improve page view, as well as other frameworks to manage the data.
+The client-side use [bootstrap](https://getbootstrap.com/) to improve page view, as well as others Javascript frameworks to manage the data.
 
 
 # Installation
 
-Enter the application directory after clone or download. Run the following commands at your preferred OS.
+Enter the application directory after clone or download. Run the following commands at your preferred OS. Instructions for installing some tools have been omitted, see the instructions on the official tool page if necessary.
 
 ## Web server
 
@@ -31,20 +31,20 @@ So it's necessary build the database before start the web server.
 * To build the database run:
 
   ```bash
-  mysql -u _user_ -p < db/create-db.sql
+  mysql -u user -p < db/create-db.sql
   ```
 
 * To import the data sample run:
 
   ```bash
-  mysql -u _user_ -p < db/predata-db.sql
+  mysql -u user -p < db/predata-db.sql
   ```
 
 Use your mysql user instead _user_
 
 ### Configure the mysql user and password:
 
-Edit the file `config.js` and change the mysql user, password, and  host where the database was installed.
+Edit the file `config.js` and change the mysql _user_, _password_ and  _hostname_ where the database was installed.
 
 
 # Running
