@@ -1,0 +1,92 @@
+extends layout
+
+block content
+
+	div(class="container-fluid customers-list")
+		div
+			h3(class="float-left") Customers registered
+			div(class="float-right")
+				button(type="button" class="btn btn-secondary m-1" id="btn-refresh") &#128259; Refresh
+				button(type="button" class="btn btn-success m-1" data-toggle="modal" data-target="#customer-modal-form") &#10133; Add customer
+				button(type="button" class="btn btn-danger m-1 delete-customer" id='btn-delete-customer-selected' disabled) Delete
+		div(class="input-group mb-2 mt-2")
+			div(class="input-group-prepend")
+				span(class="input-group-text p-1") &#128270;
+			<input class="form-control search-customer" type="text" placeholder="Search anything..">
+		table(class="table customer table-sm m-1")
+			thead
+				tr
+					th
+						div(class="custom-control custom-checkbox mb-3")
+							input(type="checkbox" class="custom-control-input" id="table-check-all")
+							label(class="custom-control-label" for="table-check-all")
+					th 
+					th(name="cpf" class='sortable') CPF
+					th(name="name" class='sortable') Name
+					th(name="email" class='sortable') E-mail 
+					th Phone numbers
+					th(name="state" class='sortable') State
+			tbody 
+
+
+	div(class="modal fade" id="customer-modal-form")
+		div(class="modal-dialog modal-lg")
+			div(class="modal-content")
+				form(action="" id='customer-form')
+					div(class="modal-header")
+						h4(class="modal-title") Register new customer
+						button(type="button" class="close" data-dismiss="modal") ×
+					div(class="modal-body")
+
+						div(class="container" id="erros-container")
+
+						div(class="input-group mb-2")
+							div(class="custom-control custom-checkbox")
+								input(type="checkbox" class="custom-control-input" id="chk-customer-active-form")
+								label(id="label-customer-active-form" class="custom-control-label" for='chk-customer-active-form') Inactive
+
+						div(class="input-group mb-2")
+							div(class="input-group-prepend")
+								span(class="input-group-text") Name
+							input(type="text" class="form-control customer" autocomplete="off" id="name" placeholder="Enter the customer name" name="name")
+
+						div(class="input-group mb-2")
+							div(class="input-group-prepend")
+								span(class="input-group-text") CPF:
+							input(type="text" class="form-control cpf customer" autocomplete="off" id="cpf" placeholder="Enter the customer CPF" name="cpf")
+
+						div(class="input-group mb-2")
+							div(class="input-group-prepend")
+								span(class="input-group-text") E-mail
+							input(type="email" class="form-control customer" autocomplete="off" id="email" placeholder="Enter the customer e-mail" name="email")
+
+						div(class="form-group")
+							label(for="usr") Phones:
+							div(class="container" id="phones-container")
+								button(id='btn-dropdown-phonetypes' type="button" class="btn btn-outline-secondary dropdown-toggle mb-2" data-toggle="dropdown") Add phone number
+								div(class="dropdown-menu")
+									span(name='mobile' class="dropdown-item phone-type") Mobile
+									span(name='home' class="dropdown-item phone-type") Home
+									span(name='work' class="dropdown-item phone-type") Work
+									span(name='fax' class="dropdown-item phone-type") Fax
+
+					div(class="modal-footer")
+						button(type="button" class="btn btn-danger delete-customer" id='btn-delete-customer-form' disabled) Delete
+						button(type="button" class="btn btn-primary" id='btn-send-customer') Send
+
+	div(class="modal fade" id="customer-modal-msg")
+		div(class="modal-dialog modal-dialog-centered")
+			div(class="modal-content")
+				div(class="modal-header")
+					h4(class="modal-title") Message Title
+					button(type="button" class="close" data-dismiss="modal") &#10060;
+				div(class="modal-body")
+					h6 Message body
+
+				div(class="modal-footer")
+					button(type="button" class="btn btn-danger" id='') Cancel
+					button(type="button" class="btn btn-primary" id='') Yes
+
+	script(type="text/javascript" src='//d3js.org/d3.v3.min.js')
+	script(type="text/javascript" src='js/main.js')
+	input(class="phone hidden")

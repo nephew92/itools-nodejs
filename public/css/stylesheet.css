@@ -1,0 +1,71 @@
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 17px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -25%;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 80%;
+  width: 40%;
+  left: 10%;
+  bottom: 10%;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 34px;
+}
+
+.btn-edit{
+  background-image: url(../res/edit.svg);
+  width: 25px;
+  height: 25px;
+}
+.hidden{
+  display: none;
+}
+.custom-checkbox .custom-control-label::before{
+  webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 3px #9b9ea2;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 0px #fff;
+}
+.sortable{
+  cursor: pointer;
+}
