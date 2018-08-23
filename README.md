@@ -24,23 +24,23 @@ The application was developed with [node.js](https://nodejs.org/en/) 10.9 Javasc
 The application use the [DBMS](https://en.wikipedia.org/wiki/Database) [MySQL 5.7](https://www.mysql.com/) without [ORM](https://en.wikipedia.org/wiki/Object-relational_mapping). 
 So it's necessary build the database before start the web server. 
 
-###Installing and building the database
+### Installing and building the database
 
 * To install the MySQL see the [documentation](https://dev.mysql.com/doc/refman/5.7/en/).
 
 * To build the database run:
 
   ```bash
-  mysql -u <_user_> -p < db/create-db.sql
+  mysql -u _user_ -p < db/create-db.sql
   ```
 
 * To import the data sample run:
 
   ```bash
-  mysql -u <_user_> -p < db/predata-db.sql
+  mysql -u _user_ -p < db/predata-db.sql
   ```
 
-Use your mysql user instead <_user_>
+Use your mysql user instead _user_
 
 ### Configure the mysql user and password:
 
