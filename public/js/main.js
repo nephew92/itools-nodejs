@@ -1,16 +1,8 @@
-// Last modification: 23-08-2018 12:30:08
+// Last modification: 23-08-2018 20:03:01
 
 $(document).ready(function(){
-	/*function toggleContent(){
-		var contentCustomersList = d3.select('div.content.customers-list'),
-			contentCustomersForm = d3.select('div.content.customers-form'),
-			toggle = contentCustomersList.classed('hidden')
-			;
-		contentCustomersForm.classed('hidden',toggle);
-		contentCustomersList.classed('hidden',!toggle);
-	}*/
-	
 
+	/* Função genérica para capitalizar strings */
 	String.prototype.capitalize = function(){ return this.charAt(0).toUpperCase() + this.slice(1)};
 	
 	function customerToForm(d){

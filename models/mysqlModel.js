@@ -1,4 +1,4 @@
-// Last modification: 23-08-2018 18:27:37
+// Last modification: 23-08-2018 19:57:41
 /* este arquivo pode ser substituido caso queira mudar o SGBD ou utilizar um ORM, basta reescrever as funções atribuidas ao 'exports' */
 
 /* carrega o MySQL connector */
@@ -14,7 +14,8 @@ con.connect(function(err) {
   console.log("Database connected!");
 });
 
-/* Funções e constantes utilizadas somente neste script */
+/** Funções e constantes utilizadas somente neste script **/
+
 String.prototype.format = function(o){//Função que formata uma string similarmente ao str.format do python, o argumento pode ser um objeto ou um array
 	var r = this;
 	Object.keys(o).forEach(d=>{
@@ -22,12 +23,14 @@ String.prototype.format = function(o){//Função que formata uma string similarm
 	})
 	return r
 	}
+
 function queryDatabase(query,callback){ //Esta função global faz as queries no banco, requer um string contendo o SQL e um calback que é chamado ao final da execução da query
 	console.log(query)
 	con.query(query, function (err, result, fields) {
 		callback(result,err); //sempre retorna o resultado (caso seja uma seleção) e o erro (caso haja)
 	});
 	}
+
 const QUERIES = { //Constante incluindo todos as queries disponíveis, as SQL com {} serão formatadas antes de seram executadas
 	allCustomers: "SELECT c.*,p.phones FROM customer c left join (SELECT customer_cpf,GROUP_CONCAT(type,':',phone_number) phones from phone group by customer_cpf) p on c.cpf=p.customer_cpf where c.cpf=p.customer_cpf",
 	// insertCustomer: "INSERT INTO customer (cpf,name,email,state) VALUES ('{cpf}','{name}','{email}','{state}')", //Não Utilizado
@@ -37,6 +40,8 @@ const QUERIES = { //Constante incluindo todos as queries disponíveis, as SQL co
 	deleteAllPhonesByCPF:"DELETE FROM phone WHERE {cpfs};",
 	updateCustomerState:"UPDATE customer SET state = '{state}' WHERE cpf = '{cpf}';"
 	};
+
+/** Funções que serão exportadas para a aplicação **/
 
 exports.createOrUpdateCustomer = (callback,data) =>{
 	queryDatabase(
@@ -93,7 +98,7 @@ exports.getAllCustomersAndPhones = (callback)=>{
 	queryDatabase(QUERIES.allCustomers,function(result,err){
 		//Data Manipulation
 		result.forEach(d=>{
-			d.phones = d.phones.split(',').map(c=>c.split(':'))
+			d.phones = d.phones.split(',').map(c=>c.split(':'))//Como a query acima retorna os telefones dos cliente agrupados, esta linha separa os telefones transformando a string em um array de pares (tipo,número)
 		});
 		callback(result,err);
 	});
