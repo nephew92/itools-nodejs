@@ -1,84 +1,10 @@
-// Last modification: 23-08-2018 12:01:56
-
-/*
-	// var models = require('../models/models')
-	var Sequelize = require('sequelize');
-
-	var sequelize = new Sequelize('itools', 'francisco', '5172', {
-	    host: 'localhost',
-	    port: 3306,
-	    dialect: 'mysql'
-	});
-
-	sequelize.authenticate().then(function (err) {
-	 if (err) {
-	    console.log('There is connection in ERROR');
-	 } else {
-	    console.log('Connection has been established successfully');
-		var Phone = sequelize.define('phone', {
-		    customer_cpf: {
-		      type: Sequelize.STRING(11),
-		      allowNull: false,
-		      primaryKey: true,
-		      references: {
-		        model: 'customer',
-		        key: 'cpf'
-		      }
-		    },
-		    phone_number: {
-		      type: Sequelize.STRING(12),
-		      allowNull: false,
-		      primaryKey: true
-		    },
-		    // Timestamps
-	      createdAt: Sequelize.DATE,
-	      updatedAt: Sequelize.DATE,
-		  }, {
-		    tableName: 'phone'
-		});
-		var Customer = sequelize.define('customer', {
-		    cpf: {
-		      type: Sequelize.STRING(11),
-		      allowNull: false,
-		      primaryKey: true
-		    },
-		    name: {
-		      type: Sequelize.STRING(150),
-		      allowNull: false
-		    },
-		    email: {
-		      type: Sequelize.STRING(100),
-		      allowNull: false
-		    },
-		    state: {
-		      type: Sequelize.STRING(1),
-		      allowNull: false
-		    },
-		    // Timestamps
-	      createdAt: Sequelize.DATE,
-	      updatedAt: Sequelize.DATE,
-		  }, {
-		    tableName: 'customer'
-		  });
-		
-		Customer.sync().then(function () {
-		    console.log('Connection has been sync');
-			Customer.findAll().then(users => {
-			  console.log(users[0])
-			})
-		});
-	}
-	});
-*/
+// Last modification: 23-08-2018 16:33:41
 
 const mysql = require('mysql');
+var settings = require('../configs');
 
-const con = mysql.createConnection({
-  host: "localhost",
-  user: "francisco",
-  password: "5172",
-  database: "titools"
-});
+
+const con = mysql.createConnection(settings.db);
 
 con.connect(function(err) {
   if (err) throw err;
@@ -107,7 +33,7 @@ const QUERIES = {
 	insertUpdating:"INSERT INTO customer (cpf,name,email,state) VALUES ({cpf}, '{name}', '{email}', '{state}') ON DUPLICATE KEY UPDATE  name=values(name), email=values(email), state=values(state);",
 	deleteCustomerByCPF:"DELETE FROM customer WHERE {cpfs};",
 	deleteAllPhonesByCPF:"DELETE FROM phone WHERE {cpfs};",
-	updateCustomerState:"UPDATE titools.customer SET state = '{state}' WHERE cpf = '{cpf}';"
+	updateCustomerState:"UPDATE customer SET state = '{state}' WHERE cpf = '{cpf}';"
 };
 
 exports.createOrUpdateCustomer = (callback,data) =>{

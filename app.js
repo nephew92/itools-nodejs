@@ -1,4 +1,4 @@
-// Last modification: 23-08-2018 14:50:02
+// Last modification: 23-08-2018 15:44:33
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -17,6 +17,7 @@ var app = express();
 // view engine sup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
