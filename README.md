@@ -91,13 +91,13 @@ This API is available for requests from [localhost:8888/customers](http://localh
 * **[localhost:8888/customers/delete](http://localhost:8888/customers/delete)**: DELETE one or more customers, the CPF of the customers should be submitted as the following parameter:
   * **cpfs**: one or more CPF separated by comma.
 
-* **[localhost:8888/customers/cpf/setstate](http://localhost:8888/customers/cpf/setstate)**: UPDATE customer just changing the state. The state value should be submitted as following:
+* **[localhost:8888/customers/:cpf:/setstate](http://localhost:8888/customers/:cpf:/setstate)**: UPDATE customer just changing the state. The state value should be submitted as following:
   * **state**: 0 (inactive) or 1 (active)
 
 
 ### GET requests:
 
 * **[localhost:8888/customers](http://localhost:8888/customers)**: Return a JSON with all customers.
-* **[localhost:8888/customers/cpf](http://localhost:8888/customers/cpf)**: Return a JSON with the customer specified.
-* **[localhost:8888/customers/cpf/delete](http://localhost:8888/customers/cpf/delete)**: Delete the customer specified.
+* **[localhost:8888/customers/:cpf:](http://localhost:8888/customers/:cpf:)**: Return a JSON with the customer specified.
+* **[localhost:8888/customers/:cpf:/delete](http://localhost:8888/customers/:cpf:/delete)**: Delete the customer specified.
 
