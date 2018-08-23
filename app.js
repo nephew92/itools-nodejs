@@ -1,39 +1,38 @@
-// Last modification: 23-08-2018 15:44:33
+// Last modification: 23-08-2018 17:27:54
+
+/* Importação dos módulos utilizados */
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-// var session = require('express-session');
-// var expressValidator = require('express-validator');
 
-
+/* Carregamento das rotas disponíveis */
 var indexRouter = require('./routes/index');
 var customers = require('./routes/customerRoute');
 
+/* Aplicativo web expresso */
 var app = express();
-
 // view engine sup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-// app.use(expressValidator());
 
+/* Rotas estáticas para recursos como css, imagens e outros */
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/customers', customers);
-app.use('/lay', (req,res)=>{
-	res.render('index',{title:"teste"});
-});
+/* Definição das rotas disponíveis para a aplicação web e API RESTful */
+app.use('/', indexRouter); //página inicial utilizado para visualização da aplicação web
+app.use('/customers', customers); //utilizado somente como interface da API REST
 
-// catch 404 and forward to error handler
+
+/* Rotas de erro */
 app.use(function(req, res, next) {
   next(createError(404));
 });

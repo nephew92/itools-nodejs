@@ -62,7 +62,9 @@ npm devstart
 ```
 # Usage
 
-The app accepts just valid CPFs according to the [function](http://www.receita.fazenda.gov.br/aplicacoes/atcta/cpf/funcoes.js) provide by [Receita Federal](http://www.receita.fazenda.gov.br). Some valid hypothetical CPFs are suggested below:
+Each customer should have a _name_, _CPF_, _e-mail_, _situation_ (active or inactive) and one or more _phone numbers_.
+
+It will be accepted just valid CPFs according to the [function](http://www.receita.fazenda.gov.br/aplicacoes/atcta/cpf/funcoes.js) provide by [Receita Federal](http://www.receita.fazenda.gov.br). Some valid hypothetical CPFs are suggested below:
 
 * 840.601.842-92
 * 464.933.147-12
@@ -70,3 +72,32 @@ The app accepts just valid CPFs according to the [function](http://www.receita.f
 * 627.172.884-73
 * 176.843.422-07
 * 564.879.843-10
+
+## API REST
+
+It is a RESTful application, this imply that is possible create, read, update and delete customers from HTTP POST and GET methods.
+
+This API is available for requests from [localhost:8888/customers](http://localhost:8888/customers):
+
+### POST requests:
+
+* **[localhost:8888/customers](http://localhost:8888/customers)**: CREATE or UPDATE customers. It's required submit all this following data. If exists any problem with these parameters errors messages could be returned: 
+  * **name**,
+  * **cpf**: just numbers,
+  * **email**,
+  * **state**: 0 or 1,
+  * **phones**: JSON array of objects `{"<type>":"<phone_number>"}`. `<type>` should be _mobile_, _home_, _work_ or _fax_.
+
+* **[localhost:8888/customers/delete](localhost:8888/customers/delete)**: DELETE one or more customers, the CPF of the customers should be submitted as the following parameter:
+  * **cpfs**: one or more CPF separated by comma.
+
+* **[localhost:8888/customers/<cpf>/setstate](localhost:8888/customers/<cpf>/setstate)**: UPDATE customer just changing the state. The state value should be submitted as following:
+  * **state**: 0 (inactive) or 1 (active)
+
+
+### GET requests:
+
+* **[localhost:8888/customers](localhost:8888/customers)**: Return a JSON with all customers.
+* **[localhost:8888/customers/<cpf>](localhost:8888/customers)**: Return a JSON with the customer specified.
+* **[localhost:8888/customers/<cpf>/delete](localhost:8888/customers)**: Delete the customer specified.
+

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Module dependencies.
+ * Importa os módulos principais para o serviço web.
  */
 
 var app = require('../app');
@@ -9,25 +9,25 @@ var debug = require('debug')('itools:server');
 var http = require('http');
 
 /**
- * Get port from environment and store in Express.
+ * Define a porta a ser utilizada
  */
 
 var port = normalizePort(process.env.PORT || '8888');
 app.set('port', port);
 
 /**
- * Create HTTP server.
+ * Cria o servidor web
  */
 
 var server = http.createServer(app);
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+
+
+/***** Funções definidas automaticamente pelo pacote express-generator ******/
+
 
 /**
  * Normalize a port into a numbe, string, or false.
