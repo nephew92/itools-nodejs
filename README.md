@@ -62,7 +62,7 @@ npm devstart
 ```
 # Usage
 
-The app accepts just valid CPFs according with the [function](http://www.receita.fazenda.gov.br/aplicacoes/atcta/cpf/funcoes.js) provide by [Receita Federal](http://www.receita.fazenda.gov.br). Some valid hypothetical CPFs are suggested below:
+The app accepts just valid CPFs according to the [function](http://www.receita.fazenda.gov.br/aplicacoes/atcta/cpf/funcoes.js) provide by [Receita Federal](http://www.receita.fazenda.gov.br). Some valid hypothetical CPFs are suggested below:
 
 * 840.601.842-92
 * 464.933.147-12
