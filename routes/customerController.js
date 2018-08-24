@@ -1,4 +1,4 @@
-// Last modification: 23-08-2018 17:55:52
+// Last modification: 24-08-2018 01:17:30
 
 /* Carrega as funções de manipulação do banco de dados, caso seja preferido utilizar ORM basta mudar as funções importadas aqui */
 const model = require('../models/mysqlModel');
@@ -105,7 +105,7 @@ exports.setCustomerState = (req, res, next) => {
 exports.deleteCustomer = (req, res, next) => {
 	model.deleCustomersAndAllPhones((result,err)=>{
 	    res.status(200).end(err?'0':'1');
-	},req.params.cid); //este parâmetro é passado diretamente na URL, é sinônimo para :cid do arquivo customerRoute.js
+	},[req.params.cid]); //este parâmetro é passado diretamente na URL, é sinônimo para :cid do arquivo customerRoute.js
 };
 
 exports.deleteCustomers = [
