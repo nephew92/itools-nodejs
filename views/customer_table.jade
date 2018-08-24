@@ -3,17 +3,18 @@ extends layout
 block content
 
 	div(class="container-fluid customers-list")
-		div
-			h3(class="float-left") Customers registered
-			div(class="float-right")
-				button(type="button" class="btn btn-secondary m-1" id="btn-refresh") &#128259; Refresh
-				button(type="button" class="btn btn-success m-1" data-toggle="modal" data-target="#customer-modal-form") &#10133; Add customer
-				button(type="button" class="btn btn-danger m-1 delete-customer" id='btn-delete-customer-selected' disabled) Delete
-		div(class="input-group mb-2 mt-2")
-			div(class="input-group-prepend")
-				span(class="input-group-text p-1") &#128270;
-			<input class="form-control search-customer" type="text" placeholder="Search anything..">
-		table(class="table customer table-sm m-1")
+		div(class="sticky-top bg-light p-1")
+			div
+				h3(class="float-left") Customers registered
+				div(class="float-right")
+					button(type="button" class="btn btn-secondary m-1" id="btn-refresh") &#128259; Refresh
+					button(type="button" class="btn btn-success m-1" data-toggle="modal" data-target="#customer-modal-form") &#10133; Add customer
+					button(type="button" class="btn btn-danger m-1 delete-customer" id='btn-delete-customer-selected' disabled) Delete
+			div(class="input-group p-1")
+				div(class="input-group-prepend")
+					span(class="input-group-text p-1") &#128270;
+				<input class="form-control search-customer" type="text" placeholder="Search anything..">
+		table(class="table customer table-sm p-1")
 			thead
 				tr
 					th
