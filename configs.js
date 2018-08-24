@@ -1,8 +1,8 @@
-// Last modification: 23-08-2018 17:31:00
+// Last modification: 24-08-2018 01:30:16
 
 exports.db = {
   host: "localhost",
-  user: "francisco",
-  password: "5172",
+  user: "<user>",
+  password: "<password>",
   database: "itools"
 }
