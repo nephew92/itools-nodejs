@@ -1,4 +1,4 @@
-// Last modification: 23-08-2018 19:57:41
+// Last modification: 23-08-2018 21:56:13
 /* este arquivo pode ser substituido caso queira mudar o SGBD ou utilizar um ORM, basta reescrever as funções atribuidas ao 'exports' */
 
 /* carrega o MySQL connector */
@@ -77,11 +77,15 @@ exports.deleCustomersAndAllPhones = (callback,cpfs)=>{
 	queryDatabase(
 		QUERIES.deleteCustomerByCPF.format({cpfs:cpfs.map(cpf=>`cpf='${cpf}'`).join(' OR ')}),				//Como pode ser deletado um ou mais clientes por requisição, aqui todos os CPFs são concatenados em uma única query. De modo similar serã apagados os telefones
 		(result,err)=>{
-			queryDatabase(
-				QUERIES.deleteAllPhonesByCPF.format({cpfs:cpfs.map(cpf=>`customer_cpf='${cpf}'`).join(' OR ')}),
-				(result,err)=>{
-					callback(result,err);
-				});
+			if (err){//Se houve algum erro na query acima
+				callback(result,err);
+			}else{
+				queryDatabase(
+					QUERIES.deleteAllPhonesByCPF.format({cpfs:cpfs.map(cpf=>`customer_cpf='${cpf}'`).join(' OR ')}),
+					(result,err)=>{
+						callback(result,err);
+					});
+			}
 			}
 		);
 	}

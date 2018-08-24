@@ -88,10 +88,10 @@ This API is available for requests from [localhost:8888/customers](http://localh
   * **state**: 0 or 1,
   * **phones**: JSON array of objects `{"<type>":"<phone_number>"}`. `<type>` should be _mobile_, _home_, _work_ or _fax_.
 
-* **[localhost:8888/customers/delete](http://localhost:8888/customers/delete)**: DELETE one or more customers, the CPF of the customers should be submitted as the following parameter:
+* **[localhost:8888/customers/delete](http://localhost:8888/customers/delete)**: DELETE one or more customers. Return `1` if the customer was deleted and `0` if not. The CPF of the customers should be submitted as the following parameter:
   * **cpfs**: one or more CPF separated by comma.
 
-* **[localhost:8888/customers/:cpf:/setstate](http://localhost:8888/customers/:cpf:/setstate)**: UPDATE customer just changing the state. The state value should be submitted as following:
+* **[localhost:8888/customers/:cpf:/setstate](http://localhost:8888/customers/:cpf:/setstate)**: UPDATE customer just changing the state. Return `1` if the customer state was updated and `0` if not. The state value should be submitted as following:
   * **state**: 0 (inactive) or 1 (active)
 
 
