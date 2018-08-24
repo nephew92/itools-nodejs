@@ -11,7 +11,7 @@ Enter the application directory after clone or download. Run the following comma
 
 ## Web server
 
-The application was developed with [node.js](https://nodejs.org/en/) 10.9 Javascript framework. Install it before start, as well [NPM](https://www.npmjs.com) package.
+The application was developed with [Node.js](https://nodejs.org/en/) 10.9.0 Javascript framework. Install it before start, as well [NPM](https://www.npmjs.com) 6.4.0 package. Make sure that you have the latest version for nodejs and npm, run `node --version` and `npm --version` to see it.
 
 * Install the Node modules
 
@@ -52,13 +52,13 @@ Edit the file `config.js` and change the mysql _user_, _password_ and  _hostname
 To start the web server run:
 
 ```bash
-npm start
+npm run start
 ```
 
 or 
 
 ```bash
-npm devstart
+npm run devstart
 ```
 # Usage
 

@@ -1,4 +1,4 @@
-// Last modification: 24-08-2018 01:01:20
+// Last modification: 24-08-2018 02:08:47
 
 /*
 	Author: Francisco Sobrinho
@@ -22,7 +22,6 @@ $(document).ready(function(){
 		Se for passado um objeto vazio os valores dos campos serão setados com vazio 
 	*/
 	function customerToForm(d){
-		console.log(d)
 		/** Preparação do formulário **/
 		d3.selectAll('.phone.input-group').remove();//Apaga os campos de telefones rema
 		removeErrors();//Remove as mensagens de erro remanescentes
@@ -41,7 +40,6 @@ $(document).ready(function(){
 		
 		if(d.phones){
 			d.phones.forEach(p=>{
-				console.log(p)
 				addPhoneInput(...p);//Adiciona cada um dos telefones cadastrados ao formulário
 			});
 		}
