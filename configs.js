@@ -1,4 +1,4 @@
-// Last modification: 24-08-2018 01:30:16
+// Last modification: 24-08-2018 01:38:22
 
 exports.db = {
   host: "localhost",
@@ -6,3 +6,5 @@ exports.db = {
   password: "<password>",
   database: "itools"
 }
+
+exports.port = '8888'
